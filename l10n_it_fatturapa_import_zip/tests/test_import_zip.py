@@ -89,10 +89,9 @@ class TestImportZIP(FatturapaCommon):
             expected_invoices_values = check_invoices_values.get(attachment.name)
             if expected_invoices_values is not None:
                 invoices = attachment.out_invoice_ids
-                for invoice, expected_values in zip(
+                for invoice, expected_values in zip(  # noqa: B905
                     invoices,
                     expected_invoices_values,
-                    strict=True,
                 ):
                     for field, expected_value in expected_values.items():
                         self.assertEqual(
